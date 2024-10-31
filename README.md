@@ -1,4 +1,4 @@
-# Embedding ESModules within your HTML Document
+# Embedding multiple ESModules within the same HTML Document
 
 First introduced in 2015, **ESModules** allow JavaScript to take advantage of _modular script architecture_ (*).
 
