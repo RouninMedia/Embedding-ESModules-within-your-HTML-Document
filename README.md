@@ -16,7 +16,7 @@ _However_ what you can't do - at least not natively - is embed multiple **ESModu
 
 __________
 
-* Though it's also true that, long before **ESModules** were officially introduced, unofficial module architectures already existed:
+(*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module architectures already existed:
 
  -
  -
