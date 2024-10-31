@@ -2,9 +2,9 @@
 
 First introduced in 2015, **ESModules** allow modern JS to take advantage of _modular script architecture_.
 
-From an HTML document, you can call an external **ESModule** via `<script src="/scripts/my-module.js" type="module">`
+From within an HTML document, you can call an external **ESModule** via `<script src="/scripts/my-module.js" type="module">`
 
-From an **ESModule** you may `import` another **ESModule** via two methods:
+From within an **ESModule** you may `import` another **ESModule** via two methods:
 
  - static `import`:
  - dynamic `import()`:
