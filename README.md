@@ -1,6 +1,6 @@
 # Embedding ESModules within your HTML Document
 
-First introduced in 2015, **ESModules** allow JavaScript to take advantage of _modular script architecture_*.
+First introduced in 2015, **ESModules** allow JavaScript to take advantage of _modular script architecture_ (*).
 
 From within an HTML document, you can call an external **ESModule** via `<script src="/scripts/my-module.js" type="module">`
 
