@@ -35,9 +35,15 @@ As time progressed, these attributes went from _required_ (in **HTML 4.01**) to 
 In 2015, the `type` attribute made a comeback, this time to distinguish **ESModules** from conventional **JavaScript**:
  - `<script type="module">`
 
-Notably, `module` is not a MIME type. It's just an indication of what type of script we're dealing with.
-Following this template, embedded modules have `module/embedded` as their `type`.
-`module/embedded` is also not a MIME type (even though it looks vaguely like it might be one). Instead it's just an indication of what type of script we're dealing with.
+Notably, `module` is _not_ a MIME type.
+
+It's just an indication of what type of script we're dealing with.
+
+Following this model, embedded modules have `module/embedded` as their `type`.
+
+`module/embedded` is also not a MIME type (even though it looks vaguely like it might be one).
+
+Instead it's just an indication of what type of script we're dealing with.
 
 Two further things to note:
 
