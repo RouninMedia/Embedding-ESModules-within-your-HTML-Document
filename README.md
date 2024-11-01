@@ -24,6 +24,10 @@ The following approach, involving `<script type="module/embedded">` and the asyn
 
 #### Step One: Add two or more `<script type="module/embedded">` scripts to the HTML Document
 
+**What is `module/embedded`?**
+
+**TLDR** _It's unofficial._
+
 A long time ago, it was standard to include MIME type attributes in some elements:
  - `<script type="text/javascript">`
  - `<style type="text/css">`
@@ -35,23 +39,27 @@ As time progressed, these attributes went from _required_ (in **HTML 4.01**) to 
 In 2015, the `type` attribute made a comeback, this time to distinguish **ESModules** from conventional **JavaScript**:
  - `<script type="module">`
 
-Notably, `module` is _not_ a MIME type.
+But, importantly, unlike the values from a decade earlier, the value `module` is _not_ a MIME type.
 
-It's just an indication of what type of script we're dealing with.
+Instead, it's just an indication of what type of script we're dealing with.
 
 Following this model, embedded modules have `module/embedded` as their `type`.
 
 `module/embedded` is also not a MIME type (even though it looks vaguely like it might be one).
 
-Instead it's just an indication of what type of script we're dealing with.
+Instead, it's just an indication of what type of script we're dealing with.
 
-Two further things to note:
+Two further things to note at this point:
 
 1. Quite importantly - because `<script type="module/embedded">` is unofficial and unrecognised by the browser, its contents will remain as `plaintext`. The element's contents will not be parsed by the browser and will not be executed.
 
 2. It is **required** that a `<script type="module/embedded">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
 
+_______
+
 #### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
+
+_______
 
 #### Step Three: Including at the moment of activation, once an Embedded Module is activated, any of its `exports` may be accessed of `parseEmbeddedModule()`
 
