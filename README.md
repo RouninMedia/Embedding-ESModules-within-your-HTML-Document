@@ -12,7 +12,7 @@ From an **ESModule** - either an external `.js` file or one embedded in an HTML 
  - dynamic `import()`: e.g. `let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});`
 
 ### From a Script
-From a (non-module) JavaScript - either an external `.js` file or one embedded in an HTML Document - you may still `import()` an **ESModule**, but only via dynamic `import()`
+You may also `import()` an **ESModule** from a (non-module) JavaScript - either an external `.js` file or one embedded in an HTML Document - but only via dynamic `import()`.
 
 ______
 
