@@ -24,6 +24,10 @@ The following setup, involving `<script type="module/embedded">` and the asynchr
 
 ### Step One: Add two or more `<script type="module/embedded">` scripts to the HTML Document
 
+### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
+
+### Step Three: Including at the moment of activation, once an Embedded Module is activated, any of its `exports` may be accessed of `parseEmbeddedModule()`
+
 
 __________
 
