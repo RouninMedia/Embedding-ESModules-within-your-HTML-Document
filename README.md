@@ -26,9 +26,9 @@ The following approach, involving `<script type="module/embedded">` and the asyn
 
 **What is `module/embedded`?**
 
-**TLDR** _It's unofficial._
+**TLDR:** _It's unofficial._
 
-A long time ago, it was standard to include MIME type attributes in some elements:
+**Longer explanation:** A long time ago, it was standard to include MIME type attributes in some elements:
  - `<script type="text/javascript">`
  - `<style type="text/css">`
 
