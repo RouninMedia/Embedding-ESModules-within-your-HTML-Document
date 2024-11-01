@@ -47,7 +47,8 @@ Instead it's just an indication of what type of script we're dealing with.
 
 Two further things to note:
 
-1. Quite importantly - because `<script type="module/embedded">` is unofficial and unrecognised by the browser, its contents will remain as `plaintext`. The contents will not be parsed by the browser and will not be executed.
+1. Quite importantly - because `<script type="module/embedded">` is unofficial and unrecognised by the browser, its contents will remain as `plaintext`. The element's contents will not be parsed by the browser and will not be executed.
+
 2. It is **required** that a `<script type="module/embedded">` element includes an `id` attribute.
 
 #### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
