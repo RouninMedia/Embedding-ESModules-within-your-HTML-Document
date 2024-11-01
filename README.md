@@ -1,17 +1,21 @@
 # Embedding multiple ESModules within the same HTML Document
 
-First introduced in 2015, **ESModules** allow JavaScript to take advantage of _modular script architecture_ (*).
+First introduced in 2015, **ESModules** enable JavaScript to be written using _modular script architecture_ (*).
 
+## From HTML
 From within an HTML document, you can call an external **ESModule** via `<script src="/scripts/my-module.js" type="module">`
 
-From within an **ESModule** you may `import` another **ESModule** via two methods:
+## From an ESModule
+From within an **ESModule** (either embedded in an HTML Document or in an external `.js` file) you may `import` another **ESModule** via two methods:
 
- - static `import`:
- - dynamic `import()`:
+ - static `import`: e.g. `import { export1 as alias1, export2 as alias2, /* … */ } from '/module-name.js';`
+ - dynamic `import()`: e.g. `let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});
 
-You can even embed an **ESModule** directly into an HTML document, via `<script type="module">`.
+## From a Script
+From a (non-module) JavaScript (either embedded in an HTML Document or in an external `.js` file), you may still `import()` an **ESModule**, but only via dynamic `import()`
 
-_However_ what you can't do - at least not natively - is embed multiple **ESModule** scripts into the same HTML document and then have those **ESModules** `import` and `export` from each other, resulting in a _modular script architecture_ which runs entirely within a _same-document-environment_.
+
+_However_ what you can't do - at least not natively - is embed _multiple_ **ESModule** scripts into the same HTML document and then have those **ESModules** `import` and `export` from each other, resulting in a _modular script architecture_ which runs entirely within a _same-document-environment_.
 
 
 __________
