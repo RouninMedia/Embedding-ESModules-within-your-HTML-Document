@@ -9,7 +9,7 @@ From within an HTML document, you can call an external **ESModule** via `<script
 From an **ESModule** - either an external `.js` file or one embedded in an HTML Document - you may `import` another **ESModule** via two methods:
 
  - static `import`: e.g. `import {export1 as alias1, export2 as alias2, /* … */} from '/module-name.js';`
- - dynamic `import()`: e.g. `let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});
+ - dynamic `import()`: e.g. `let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});`
 
 ### From a Script
 From a (non-module) JavaScript - either an external `.js` file or one embedded in an HTML Document - you may still `import()` an **ESModule**, but only via dynamic `import()`
