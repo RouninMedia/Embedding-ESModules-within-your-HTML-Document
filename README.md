@@ -66,7 +66,6 @@ Once the **HTML Document** contains one or more `<script type="module/embedded">
 const embeddedModules = {};
 
 const parseEmbeddedModule = async (moduleName, exportNames = []) => {
-  let exportObject = {};
   const embeddedModule = document.querySelector(`#${moduleName}`);
   if (embeddedModule.getAttribute('type') === 'module/embedded') {
     if (!embeddedModules[moduleName]) {
