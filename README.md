@@ -45,7 +45,7 @@ Instead, it's just an indication of what type of script we're dealing with.
 
 Following this model, embedded modules have `module/embedded` as their `type`.
 
-`module/embedded` is also not a MIME type (even though it looks vaguely like it might be one).
+Like `module`, `module/embedded` is also not a MIME type (even though it looks vaguely like it might be one).
 
 Instead, it's just an indication of what type of script we're dealing with.
 
