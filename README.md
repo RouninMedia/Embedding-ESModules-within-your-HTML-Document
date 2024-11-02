@@ -53,13 +53,33 @@ Two further things to note at this point:
 
 1. This is crucial: `<script type="module/embedded">` is unofficial and unrecognised by the browser. The element's contents will remain as `plaintext`. The element's contents will not be parsed by the browser and will not be executed.
 
-2. This setup **requires** that a `<script type="module/embedded">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function (see below).
+2. This setup **requires** that a `<script type="module/embedded">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
 
 _______
 
 #### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
 
-Once the **HTML Document** contains one or more `<script type="module/embedded">` elements, each of them can be explicitly activated via the `parseEmbeddedModule()` function.
+Once the **HTML Document** contains one or more `<script type="module/embedded">` elements, each of them can be explicitly activated via the `parseEmbeddedModule()` function:
+
+**`parseEmbeddedModule()` function**
+```js
+const embeddedModules = {};
+
+const parseEmbeddedModule = async (moduleName, exportNames = []) => {
+  let exportObject = {};
+  const embeddedModule = document.querySelector(`#${moduleName}`);
+  if (embeddedModule.getAttribute('type') === 'module/embedded') {
+    if (!embeddedModules[moduleName]) {
+      embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
+    }
+  }
+  return (typeof exportNames === 'string') 
+    ? {[exportNames]: embeddedModules[moduleName][exportNames]}
+    : (exportNames.length > 0) 
+        ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
+        : embeddedModules[moduleName];
+} 
+```
 
 _______
 
