@@ -99,7 +99,7 @@ _______
 
 An **Embedded Module** only needs to be activated by `parseEmbeddedModule()` once.
 
-When the **Embedded Module** is first activated, its `exports` will be imported, asynchronously, via dynamic `import()` and then retrieved from the `embeddedModules` object. 
+When the **Embedded Module** is first activated, its `exports` will be imported, asynchronously, into the `embeddedModules` object via dynamic `import()`, after which they will be retrieved from the `embeddedModules` object. 
 
 From then on, the **Embedded Module**'s exports` will be synchronously retrieved from the `embeddedModules` object, with no further `import()`-ing necessary.
 
