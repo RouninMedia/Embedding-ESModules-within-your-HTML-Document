@@ -107,6 +107,40 @@ When the **Embedded Module** is first _activated_, two things will happen:
 
 From that point onwards, whenever requested, the **Embedded Module**'s `exports` will be synchronously retrieved from the `embeddedModules` object, with no further `import()`-ing necessary.
 
+Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjunction with `.then()` or else we can use it with with `await`, within an `async` function.
+
+**Example with `.then()`:**
+```
+<script type="module/embedded" id="testModule1">
+
+  const displayParagraph_1 = (text) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `1: ${text}`;
+    document.body.appendChild(paragraph);
+  }
+
+  const paragraph_1 = 'This is a paragraph export PLUS a function export';
+  export {displayParagraph_1, paragraph_1};
+
+</script>
+
+<script type="module/embedded" id="testModule2">
+
+  const displayParagraph_2 = (text) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `2: ${text}`;
+    document.body.appendChild(paragraph);
+  }
+
+  const paragraph_2 = 'This is also a paragraph export PLUS a function export';
+  // export default paragraph_2;
+  export {displayParagraph_2, paragraph_2};
+
+</script>
+
+
+```
+
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
