@@ -87,7 +87,7 @@ If the function cannot find the **Embedded Module** by `id` in the same **HTML D
 
 > `<script type="module/embedded" id="${moduleName}"> not found in document`
 
-If the function can find the **Embedded Module**, it will check to see if the `exports` of that **Embedded Module** have already been imported into the `embeddedModules` object and, if not, it will `import` them.
+If the function can find the **Embedded Module**, it will check to see if the `exports` of that **Embedded Module** have already been imported into the `embeddedModules` object and, if not, it will activate the **Embedded Module** and `import` them.
 
 Once the `embeddedModules` object contains the **Embedded Module**'s `exports`, the function will return one, several or all of the exports, according to the `exportNames` parameter.
 
@@ -96,6 +96,11 @@ After returning one or more  **Embedded Module** `exports`, the function ends.
 _______
 
 #### Step Three: Including at the moment of activation, once an Embedded Module is activated, any of its `exports` may be accessed of `parseEmbeddedModule()`
+
+An **Embedded Module** only needs to be activated by `parseEmbeddedModule()` once.
+
+Once the **Embedded Module** is activated, its `exports` will, from then on, be synchronously available from the `embeddedModules` object.
+
 
 
 __________
