@@ -24,7 +24,7 @@ The following custom-built approach, involving `<script type="module/embedded" i
 
 #### Step One: Add two or more `<script type="module/embedded" id="example-id">` scripts to the HTML Document
 
-**What is `module/embedded`?**
+**What is `type="module/embedded"`?**
 
 **TLDR:** _It's unofficial._
 
@@ -53,7 +53,7 @@ Instead, it's just an indication of what type of script we're dealing with.
 
 Two further things to note at this point:
 
-1. `<script type="module/embedded" id="example-id">` is unofficial and unrecognised by the browser. This is crucial because it means the element's contents will remain as unparsed `plaintext`. Since the element's contents are not parsed, they will not be executed, either.
+1. Fairly importantly, `<script type="module/embedded" id="example-id">` is unofficial and unrecognised by the browser. Not being recognised by the browser means the element's contents will remain as unparsed `plaintext`. Since the element's contents are not parsed, they cannot be executed, either.
 
 2. This setup **requires** that a `<script type="module/embedded" id="example-id">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
 
