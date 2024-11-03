@@ -22,7 +22,7 @@ _However_ what you can't do - at least not natively - is embed _multiple_ **ESMo
 
 The following custom-built approach, involving `<script type="module/embedded">` and the asynchronous function `parseEmbeddedModule()` makes this possible:
 
-#### Step One: Add two or more `<script type="module/embedded">` scripts to the HTML Document
+#### Step One: Add two or more `<script type="module/embedded" id="example-id">` scripts to the HTML Document
 
 **What is `module/embedded`?**
 
@@ -61,7 +61,7 @@ _______
 
 #### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
 
-Once the **HTML Document** contains one or more `<script type="module/embedded">` elements, each of them can be explicitly activated via the asynchronous `parseEmbeddedModule()` function:
+Once the **HTML Document** contains one or more `<script type="module/embedded" id="example-id">` elements, each of them can be explicitly activated via the asynchronous `parseEmbeddedModule()` function:
 
 ##### `parseEmbeddedModule()` function
 ```js
