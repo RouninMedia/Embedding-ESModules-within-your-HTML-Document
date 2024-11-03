@@ -109,10 +109,9 @@ From that point onwards, whenever requested, the **Embedded Module**'s `exports`
 
 Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjunction with `.then()` or else we can use it with with `await`, within an `async` function.
 
-##### EMBEDDED MODULES
+##### TWO EMBEDDED MODULES
 ```js
 <script type="module/embedded" id="testModule1">
-
   const displayParagraph_1 = (text) => {
     const paragraph = document.createElement('p');
     paragraph.textContent = `1: ${text}`;
@@ -121,11 +120,9 @@ Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjuncti
 
   const paragraph_1 = 'This is a paragraph export PLUS a function export';
   export {displayParagraph_1, paragraph_1};
-
 </script>
 
 <script type="module/embedded" id="testModule2">
-
   const displayParagraph_2 = (text) => {
     const paragraph = document.createElement('p');
     paragraph.textContent = `2: ${text}`;
@@ -135,7 +132,6 @@ Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjuncti
   const paragraph_2 = 'This is also a paragraph export PLUS a function export';
   // export default paragraph_2;
   export {displayParagraph_2, paragraph_2};
-
 </script>
 
 ```
