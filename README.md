@@ -109,7 +109,7 @@ From that point onwards, whenever requested, the **Embedded Module**'s `exports`
 
 __________
 
-(*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module architectures already existed:
+(*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
 
  - **Module Pattern (2007):** http://web.archive.org/web/20140903025035/http://yuiblog.com/blog/2007/06/12/module-pattern/
  - **Revealing Module Pattern (2007):** https://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
