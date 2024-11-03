@@ -196,7 +196,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   })();
 ```
 
-###### USING `parseEmbeddedModule()` WITH THEN()
+###### USING `parseEmbeddedModule()` WITH .THEN()
 ```js
 **Example with `.then()`:**
 ```
