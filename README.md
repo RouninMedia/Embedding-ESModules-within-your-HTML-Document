@@ -107,5 +107,6 @@ __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module architectures already existed:
 
- -
- -
+ - **Module Pattern (2007):** http://web.archive.org/web/20140903025035/http://yuiblog.com/blog/2007/06/12/module-pattern/
+ - **Revealing Module Pattern (2007):** https://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
+ - **Definitive Module Pattern:** http://inniepress.blogspot.com/2014/07/definitive-module-pattern.html
