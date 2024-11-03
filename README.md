@@ -166,33 +166,33 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   // ALL EXPORTS (VIA DEFAULT PARAMETER)
   const test_A1 = await parseEmbeddedModule('testModule1'); // INITIALISES testModule_1 FOR ALL FUTURE EXPORTS UNTIL PAGE IS REFRESHED
   const test_A2 = await parseEmbeddedModule('testModule2'); // INITIALISES testModule_2 FOR ALL FUTURE EXPORTS UNTIL PAGE IS REFRESHED
-  test_A1.displayParagraph_1(test_A1.paragraph_1);
-  test_A2.displayParagraph_2(test_A2.paragraph_2);
+  test_A1.displayParagraph_1(`test_A1: ${test_A1.paragraph_1}`);
+  test_A2.displayParagraph_2(`test_A2: ${test_A2.paragraph_2}`);
 
   // SINGLE EXPORT (VIA STRING PARAMETER)
   const test_B1 = await parseEmbeddedModule('testModule1', 'paragraph_1');
-  console.log(test_B1.paragraph_1);
+  console.log(`test_B1: ${test_B1.paragraph_1}`);
 
   const test_B2 = await parseEmbeddedModule('testModule2', 'paragraph_2');
-  console.log(test_B2.paragraph_2);
+  console.log(`test_B2: ${test_B2.paragraph_2}`);
 
   // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
   const test_C1 = await parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']);
   const test_C2 = await parseEmbeddedModule('testModule2', ['displayParagraph_2', 'paragraph_2']);
-  test_C1.displayParagraph_1(test_C1.paragraph_1);
-  test_C2.displayParagraph_2(test_C2.paragraph_2);
+  test_C1.displayParagraph_1(`test_C1: ${test_C1.paragraph_1}`);
+  test_C2.displayParagraph_2(`test_C2: ${test_C2.paragraph_2}`);
 
   // SYNCHRONOUS RETRIEVAL
   const test_D1 = embeddedModules['testModule1'];
   const test_D2 = embeddedModules['testModule2'];
-  test_D1.displayParagraph_1(test_D1.paragraph_1);
-  test_D2.displayParagraph_2(test_D2.paragraph_2);
+  test_D1.displayParagraph_1(`test_D1: ${test_D1.paragraph_1}`);
+  test_D2.displayParagraph_2(`test_D2: ${test_D2.paragraph_2}`);
 
   // THIS WILL NOT WORK
-  test_B1.displayParagraph_1(test_B1.paragraph_1); // test_B1.displayParagraph_1 is not a function
-  test_B2.displayParagraph_2(test_B2.paragraph_2); // test_B2.displayParagraph_1 is not a function
+  test_B1.displayParagraph_1(`test_B1: ${test_B1.paragraph_1}`); // test_B1.displayParagraph_1 is not a function
+  test_B2.displayParagraph_2(`test_B1: ${test_B2.paragraph_2}`); // test_B2.displayParagraph_1 is not a function
 
-  })();
+})();
 ```
 
 Let's take a closer look at the code above to get a better idea of what's happening in each section:
