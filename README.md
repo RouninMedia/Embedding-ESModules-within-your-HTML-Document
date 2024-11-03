@@ -78,7 +78,10 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
         : embeddedModules[moduleName];
 }
 ```
+As parameters, the function expects:
 
+ - a `moduleName` _(required)_
+ - a list of one or more `exportNames` _(optional)_
 _______
 
 #### Step Three: Including at the moment of activation, once an Embedded Module is activated, any of its `exports` may be accessed of `parseEmbeddedModule()`
