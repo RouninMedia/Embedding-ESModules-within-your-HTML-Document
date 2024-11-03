@@ -182,7 +182,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   test_C1.displayParagraph_1(`test_C1: ${test_C1.paragraph_1}`);
   test_C2.displayParagraph_2(`test_C2: ${test_C2.paragraph_2}`);
 
-  // SYNCHRONOUS RETRIEVAL
+  // SYNCHRONOUS RETRIEVAL (ONLY POSSIBLE AFTER EMBEDDED MODULE ACTIVATION)
   const test_D1 = embeddedModules['testModule1'];
   const test_D2 = embeddedModules['testModule2'];
   test_D1.displayParagraph_1(`test_D1: ${test_D1.paragraph_1}`);
