@@ -55,7 +55,7 @@ Two further things to note at this point:
 
 1. Fairly importantly, `<script type="module/embedded" id="example-id">` is unofficial and unrecognised by the browser. Not being recognised by the browser means the element's contents will remain as unparsed `plaintext`. Since the element's contents are not parsed, they cannot be executed, either.
 
-2. This setup **requires** that a `<script type="module/embedded" id="example-id">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
+2. `<script type="module/embedded" id="example-id">` **must** include an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
 
 _______
 
