@@ -110,6 +110,8 @@ From that point onwards, whenever requested, the **Embedded Module**'s `exports`
 Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjunction with `.then()` or else we can use it with with `await`, within an `async` function.
 
 **Example with `.then()`:**
+
+##### EMBEDDED MODULES
 ```
 <script type="module/embedded" id="testModule1">
 
@@ -138,9 +140,67 @@ Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjuncti
 
 </script>
 
-
 ```
 
+##### `parseEmbeddedModule()` FUNCTION
+```
+const embeddedModules = {};
+
+const parseEmbeddedModule = async (moduleName, exportNames = []) => {
+  const embeddedModule = document.querySelector(`#${moduleName}`);
+
+  if (embeddedModule?.getAttribute('type') !== 'module/embedded') throw new Error(`<script type="module/embedded" id="${moduleName}"> not found in document`);
+
+  if (!embeddedModules[moduleName]) {
+    embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
+  }
+
+  return (typeof exportNames === 'string') 
+    ? {[exportNames]: embeddedModules[moduleName][exportNames]}
+    : (exportNames.length > 0) 
+        ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
+        : embeddedModules[moduleName];
+}
+```
+
+###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
+
+```js
+  // USING ASYNC / AWAIT
+  (async () => {
+
+    // ALL EXPORTS (VIA DEFAULT PARAMETER)
+    let test_A1 = await parseEmbeddedModule('testModule1'); // INITIALISES testModule_1 FOR ALL FUTURE EXPORTS WITHIN THIS ASYNC FUNCTION
+    let test_A2 = await parseEmbeddedModule('testModule2'); // INITIALISES testModule_2 FOR ALL FUTURE EXPORTS WITHIN THIS ASYNC FUNCTION
+    test_A1.displayParagraph_1(test_A1.paragraph_1);
+    test_A2.displayParagraph_2(test_A2.paragraph_2);
+
+    // SINGLE EXPORT (VIA STRING PARAMETER)
+    let test_B1 = await parseEmbeddedModule('testModule1', 'paragraph_1');
+    console.log(test_B1.paragraph_1);
+
+    let test_B2 = await parseEmbeddedModule('testModule2', 'paragraph_2');
+    console.log(test_B2.paragraph_2);
+
+    // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
+    let test_C1 = await parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']);
+    let test_C2 = await parseEmbeddedModule('testModule2', ['displayParagraph_2', 'paragraph_2']);
+    test_C1.displayParagraph_1(test_C1.paragraph_1);
+    test_C2.displayParagraph_2(test_C2.paragraph_2);
+
+    // SYNCHRONOUS RETRIEVAL
+    let test_D1 = embeddedModules['testModule1'];
+    let test_D2 = embeddedModules['testModule2'];
+    test_D1.displayParagraph_1(test_D1.paragraph_1);
+    test_D2.displayParagraph_2(test_D2.paragraph_2);
+
+    // THIS WILL NOT WORK
+    test_B1.displayParagraph_1(test_B1.paragraph_1); // test_B1.displayParagraph_1 is not a function
+    test_B2.displayParagraph_2(test_B2.paragraph_2); // test_B2.displayParagraph_1 is not a function
+
+
+  })();
+```
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
