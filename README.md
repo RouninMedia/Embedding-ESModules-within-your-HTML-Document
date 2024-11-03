@@ -186,7 +186,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 
   // THIS WILL NOT WORK
   test_B1.displayParagraph_1(`test_B1: ${test_B1.paragraph_1}`); // test_B1.displayParagraph_1 is not a function
-  test_B2.displayParagraph_2(`test_B1: ${test_B2.paragraph_2}`); // test_B2.displayParagraph_1 is not a function
+  test_B2.displayParagraph_2(`test_B2: ${test_B2.paragraph_2}`); // test_B2.displayParagraph_1 is not a function
 
 })();
 ```
