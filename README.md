@@ -43,7 +43,9 @@ But, importantly, unlike the values from a decade earlier, the value `module` is
 
 Instead, it's just an indication of what type of script we're dealing with.
 
-Following this model, embedded modules have `module/embedded` as their `type`.
+Following this model, embedded modules look like this:
+
+ - `<script type="module/embedded" id="example-id">`
 
 Like `module`, even though it looks vaguely like it might be one, `module/embedded` is also not a MIME type.
 
@@ -51,9 +53,9 @@ Instead, it's just an indication of what type of script we're dealing with.
 
 Two further things to note at this point:
 
-1. This is crucial: `<script type="module/embedded">` is unofficial and unrecognised by the browser. The element's contents will remain as `plaintext`. The element's contents will not be parsed by the browser and will not be executed.
+1. `<script type="module/embedded" id="example-id">` is unofficial and unrecognised by the browser. This is crucial because it means the element's contents will remain as unparsed `plaintext`. Since the element's contents are not parsed, they will not be executed, either.
 
-2. This setup **requires** that a `<script type="module/embedded">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
+2. This setup **requires** that a `<script type="module/embedded" id="example-id">` element includes an `id` attribute. If it doesn't have one, it cannot be parsed by the `parseEmbeddedModule()` function.
 
 _______
 
