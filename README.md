@@ -95,13 +95,13 @@ After returning one or more  **Embedded Module** `exports`, the function ends.
 
 _______
 
-#### Step Three: From now on, the Embedded Module's `exports` may be synchronously retrieved from the `embeddedModules` object
+#### Step Three: The Embedded Module's `exports` are now retrievable from the `embeddedModules` object
 
 An **Embedded Module** only needs to be activated by `parseEmbeddedModule()` once.
 
-Once the **Embedded Module** is activated, its `exports` will, from then on, be synchronously available from the `embeddedModules` object.
+When the **Embedded Module** is first activated, its `exports` will be imported, asynchronously, via dynamic `import()` and then retrieved from the `embeddedModules` object. 
 
-
+From then on, the **Embedded Module**'s exports` will be synchronously retrieved from the `embeddedModules` object, with no further `import()`-ing necessary.
 
 __________
 
