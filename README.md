@@ -109,10 +109,8 @@ From that point onwards, whenever requested, the **Embedded Module**'s `exports`
 
 Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjunction with `.then()` or else we can use it with with `await`, within an `async` function.
 
-**Example with `.then()`:**
-
 ##### EMBEDDED MODULES
-```
+```js
 <script type="module/embedded" id="testModule1">
 
   const displayParagraph_1 = (text) => {
@@ -143,7 +141,7 @@ Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjuncti
 ```
 
 ##### `parseEmbeddedModule()` FUNCTION
-```
+```js
 const embeddedModules = {};
 
 const parseEmbeddedModule = async (moduleName, exportNames = []) => {
@@ -163,7 +161,6 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 ###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
 
 ```js
-  // USING ASYNC / AWAIT
   (async () => {
 
     // ALL EXPORTS (VIA DEFAULT PARAMETER)
@@ -197,6 +194,11 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 
 
   })();
+```
+
+###### USING `parseEmbeddedModule()` WITH THEN()
+```js
+**Example with `.then()`:**
 ```
 __________
 
