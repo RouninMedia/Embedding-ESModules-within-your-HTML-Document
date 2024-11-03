@@ -67,17 +67,16 @@ const embeddedModules = {};
 
 const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   const embeddedModule = document.querySelector(`#${moduleName}`);
-  if (embeddedModule.getAttribute('type') === 'module/embedded') {
-    if (!embeddedModules[moduleName]) {
-      embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
-    }
+  if (embeddedModule?.getAttribute('type') !== 'module/embedded') throw new Error(`<script type="module/embedded" id="${moduleName}"> not found in document`);
+  if (!embeddedModules[moduleName]) {
+    embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
   }
   return (typeof exportNames === 'string') 
     ? {[exportNames]: embeddedModules[moduleName][exportNames]}
     : (exportNames.length > 0) 
         ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
         : embeddedModules[moduleName];
-} 
+}
 ```
 
 _______
