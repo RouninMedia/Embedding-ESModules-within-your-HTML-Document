@@ -193,7 +193,11 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 
 Let's take a closer look at the `async / await` code above to get a better idea of what's happening in each section:
 
- - 
+ - **All Exports:**
+ - **Single Export:**
+ - **Multiple Exports:**
+ - **Synchronous Retrieval:**
+ - **This will not work:**
 
 ###### USING `parseEmbeddedModule()` WITH .THEN()
 ```js
@@ -224,7 +228,11 @@ parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => module.disp
 
 Let's take a closer look at the `.then()`-based code above to get a better idea of what's happening in each section:
 
- - 
+ - **All Exports:**
+ - **Single Export:**
+ - **Multiple Exports:**
+ - **Synchronous Retrieval:**
+ - **This will not work:**
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
