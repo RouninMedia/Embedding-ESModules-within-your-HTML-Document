@@ -191,7 +191,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 })();
 ```
 
-Let's take a closer look at the code above to get a better idea of what's happening in each section:
+Let's take a closer look at the `async / await` code above to get a better idea of what's happening in each section:
 
  - 
 
@@ -221,6 +221,10 @@ setTimeout(() => {
 parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => module.displayParagraph_1(`test_B1: ${module.paragraph_1}`));
 parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => module.displayParagraph_2(`test_B2: ${module.paragraph_2}`));
 ```
+
+Let's take a closer look at the `.then()`-based code above to get a better idea of what's happening in each section:
+
+ - 
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
