@@ -193,9 +193,9 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 
 Let's take a closer look at the `async / await` code above to get a better idea of what's happening in each section:
 
- - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there is no subsequent argument detailing which named exports are to be parsed, _all_ exports from the **embedded module** will be parsed. From then on until page reload, all named exports from the imported module will remain synchronously available from the global scope.
- - **Single Export:** The second easiest way to use the `parseEmbeddedModule()` function is with two arguments, where the second argument represents _a single named export_ from the **embedded module** about to be imported. In this case, that specific named export will remain synchronously available until page reload - but no other named exports from the imported module will be.
- - **Multiple Exports:**
+ - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there are no subsequent arguments detailing which named exports are to be parsed, _all exports_ from the **embedded module** will be parsed. From then on until page reload, _all named exports_ from the imported module will remain synchronously available from the global scope.
+ - **Single Export:** The second easiest way to use the `parseEmbeddedModule()` function is to introduce (as a second argument) a string indicating the name of _a single export_ from the **embedded module** about to be imported. In this case, _that specific named export_ will remain synchronously available until page reload - but no other named exports from the imported module will be. Keep in mind this behaviour might be desirable in only a limited set of situations.
+ - **Multiple Exports:** Thirdly, instead of deploying a `string`, we can introduce a second argument which is an `array`. In this instance 
  - **Synchronous Retrieval:**
  - **This will not work:**
 
