@@ -193,8 +193,8 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 
 Let's take a closer look at the `async / await` code above to get a better idea of what's happening in each section:
 
- - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there is no second argument detailing which named exports are to be parsed, _all_ exports from the **embedded module** will be parsed. From then on until page reload, all named exports from the imported module will remain synchronously available from the global scope.
- - **Single Export:** The second easiest way to use the `parseEmbeddedModule()` function is with two arguments, where the second argument represents a _single named export_ from the **embedded module** about to be imported. In this case, that specific named export will remain synchronously available until page reload - but no other named exports from the imported module will be.
+ - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there is no subsequent argument detailing which named exports are to be parsed, _all_ exports from the **embedded module** will be parsed. From then on until page reload, all named exports from the imported module will remain synchronously available from the global scope.
+ - **Single Export:** The second easiest way to use the `parseEmbeddedModule()` function is with two arguments, where the second argument represents _a single named export_ from the **embedded module** about to be imported. In this case, that specific named export will remain synchronously available until page reload - but no other named exports from the imported module will be.
  - **Multiple Exports:**
  - **Synchronous Retrieval:**
  - **This will not work:**
