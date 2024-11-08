@@ -195,7 +195,7 @@ Let's take a closer look at the `async / await` code above to get a better idea 
 
  - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there are no subsequent arguments detailing which named exports are to be parsed, _all exports_ from the **embedded module** will be parsed. From then on until page reload, _all named exports_ from the imported module will remain synchronously available from the global scope.
  - **Single Export:** The _second_ easiest way to use the `parseEmbeddedModule()` function is to introduce a `string` (as the function's other argument) indicating the name of _a single export_ from the **embedded module** about to be imported. In this case, _that specific named export_ will remain synchronously available until page reload, though no other named exports from the imported module will be. Keep in mind this behaviour might be desirable in only a limited set of situations.
- - **Multiple Exports:** Thirdly, instead of deploying a `string`, we can introduce a second argument which is an `array`. In this instance 
+ - **Multiple Exports:** Thirdly, instead of deploying a `string`, we can introduce a second argument which is an `array`. In this instance, each array element represents the name of an export from the embedded module about to be imported. Each of these named exports will remain synchronously available until page reload, though no other named exports from the imported module will be.
  - **Synchronous Retrieval:** Given that
  - **This will not work:** We can try the same thing
 
