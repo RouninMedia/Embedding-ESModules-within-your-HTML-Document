@@ -192,7 +192,7 @@ We can straightforwardly use the `parseEmbeddedModule()` function with `await`, 
 })();
 ```
 
-Let's take a closer look at the `async / await` code above to get a better idea of what's happening in each section:
+Let's take a closer look at the `async / await` code above to get a better idea about what's happening in each section:
 
  - **All Exports:** The easiest way to use the `parseEmbeddedModule()` function is with only a single argument. That string argument represents the `id` of the **embedded module** about to be imported. Since there are no subsequent arguments detailing which named exports are to be parsed, _all exports_ from the **embedded module** will be parsed. From then on until page reload, _all named exports_ from the imported module will remain synchronously available from the global scope.
  - **Single Export:** The _second_ easiest way to use the `parseEmbeddedModule()` function is to introduce a `string` (as the function's second argument) indicating the name of _a single export_ from the **embedded module** about to be imported. In this case, _that specific named export_ will remain synchronously available until page reload, though no other named exports from the imported module will be. Keep in mind this behaviour might be desirable in only a limited set of situations.
