@@ -155,6 +155,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 ```
 
 ###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
+We can straightforwardly use the `parseEmbeddedModule()` function with `await`, inside an `async` function:
 
 ```js
 (async () => {
