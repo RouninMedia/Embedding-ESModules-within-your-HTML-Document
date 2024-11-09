@@ -236,6 +236,12 @@ Let's take a closer look at the `.then()`-based code above to get a better idea 
  - **Multiple Exports:**
  - **Synchronous Retrieval:**
  - **This will not work:**
+
+______
+
+## Conclusion
+
+That's it. We can now add 
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
