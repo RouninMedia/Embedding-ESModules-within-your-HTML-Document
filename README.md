@@ -249,7 +249,7 @@ And we can `import` the `exports` from those **embedded modules** into one or mo
  - `<script type="module">`
  - `<script type="module/embedded">`
 
-in the same document.
+elements in the same document.
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
