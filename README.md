@@ -24,13 +24,13 @@ The following custom-built approach, involving `<script type="module/embedded" i
 
 ________
 
-## Example of ESModules importing and exporting within a single HTML Document
+## _Example of ESModules importing and exporting within a single HTML Document_
 
- - https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/
+ - _https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/_
 
 ________
 
-## Three Steps to Same-Document ESModules
+## Three Steps to Same Document ESModules
 
 #### Step One: Add two or more `<script type="module/embedded" id="example-id">` scripts to the HTML Document
 
