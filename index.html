@@ -4,6 +4,17 @@
 </head>
 
 <body>
+<h1>Embedding ESModules within a single HTML Document</h1>
+<p>It won't be immediately obvious what's happening below - and, initially, it looks a lot less impressive than it is.</p>
+<p>What's actually happening is that two <strong>ESModules</strong> are embedded into this (single) document and each <strong>ESModule</strong> has two <code>exports</code>:</p>
+<ul>
+<li>a <code>function</code></li>  
+<li>a <code>string</code>, several dozen characters in length</li>
+</ul>
+<p>Once both <code>exports</code> have been <code>imported</code> into the document, the <code>imported function</code> is run, with the <code>imported string</code> as its <em>argument</em>.</p>
+<p>Being able to <em>embed</em> and access re-usable <strong>ESModules</strong> into a single document is a game-changer.</p>  
+
+  
 <script type="module/embedded" id="testModule1">
   const displayParagraph_1 = (text) => {
     const paragraph = document.createElement('p');
