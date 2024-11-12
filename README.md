@@ -155,7 +155,7 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
 ```
 
 ###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
-We can straightforwardly use the `parseEmbeddedModule()` function with `await`, inside an `async` function:
+We can straightforwardly use the `parseEmbeddedModule()` function with `async` / `await` syntax:
 
 ```js
 (async () => {
@@ -239,7 +239,13 @@ ______
 
 ## Conclusion
 
-That's it. We can now add 
+That's it. We can now add **embedded modules** to a single document via `<script type="module/embedded">` and `import` the `exports` from those **embedded modules** into one or more:
+
+ - `<script>`
+ - `<script type="module">`
+ - `<script type="module/embedded">`
+
+in the same document.
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
