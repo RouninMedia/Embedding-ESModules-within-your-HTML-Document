@@ -1,5 +1,11 @@
 # Embedding multiple ESModules within the same HTML Document
 
+## Example of ESModules importing and exporting within a single HTML Document
+
+ - https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/
+
+________
+
 First introduced in 2015, **ESModules** enable JavaScript to be written using _modular script architecture_ (*).
 
 ### From HTML
@@ -250,6 +256,7 @@ And we can `import` the `exports` from those **embedded modules** into one or mo
  - `<script type="module/embedded">`
 
 elements in the same document.
+
 __________
 
 (*) Though it's also true that, long before **ESModules** were officially introduced, unofficial module-like design patterns already existed:
@@ -257,3 +264,9 @@ __________
  - **Module Pattern (2007):** http://web.archive.org/web/20140903025035/http://yuiblog.com/blog/2007/06/12/module-pattern/
  - **Revealing Module Pattern (2007):** https://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
  - **Definitive Module Pattern (2014):** http://inniepress.blogspot.com/2014/07/definitive-module-pattern.html
+
+_______
+
+## Example of ESModules importing and exporting within a single HTML Document
+
+ - https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/
