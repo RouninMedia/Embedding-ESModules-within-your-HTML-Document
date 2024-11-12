@@ -24,7 +24,7 @@ The following custom-built approach, involving `<script type="module/embedded" i
 
 ________
 
-## _Example of ESModules importing and exporting within a single HTML Document_
+## Example of ESModules importing and exporting within a single HTML Document
 
  - _https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/_
 
