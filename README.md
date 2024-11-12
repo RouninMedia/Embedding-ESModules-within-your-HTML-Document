@@ -194,7 +194,7 @@ We can straightforwardly use the `parseEmbeddedModule()` function with `await`, 
 
 Let's take a closer look at the `async / await` code above to get a better idea about what's happening in each section:
 
- - **All Exports:** The easiest way to assign the exports of an **embedded module** to a variable is to deploy the `parseEmbeddedModule()` function with a single argument. That string argument represents the `id` of the **embedded module** about to be activated. Since there are no subsequent arguments detailing which named exports are to be assigned to the variable, _all exports_ from the **embedded module** will be assigned. From then on until page reload, _all named exports_ from the activated module will remain synchronously available _both_ from the global `embeddedModules` object _and_ from the variable to which the embedded module exports have been assigned.
+ - **All Exports:** The easiest way to assign the exports of an **embedded module** to a variable is to deploy the `parseEmbeddedModule()` function with a single `string` argument. That argument represents the `id` of the **embedded module** about to be activated. Since there are no subsequent arguments detailing which named exports are to be assigned to the variable, _all exports_ from the **embedded module** will be assigned. From then on until page reload, _all named exports_ from the activated module will remain synchronously available _both_ from the global `embeddedModules` object _and_ from the variable to which the embedded module exports have been assigned.
  - **Single Export:** The _second_ easiest way to deploy the `parseEmbeddedModule()` function is to introduce, as the function's second argument, a `string` which indicates the name of _a single named export_ from the **embedded module**. In this case (as above) _all named exports_ from the activated module will become available from the global `embeddedModules` object but, in contrast, _only that specific named export_ will be available from the assignment variable. Note that this behaviour might be desirable in only a limited set of situations.
  - **Multiple Exports:** Thirdly, instead of deploying a `string`, we can introduce a second argument which is an `array`. Each array element represents the name of an export from the embedded module about to be imported. Each of these _named exports_ will become available from the variable to which they have been assigned, though (as above) _**all** named exports_ from the activated module will be available from the global `embeddedModules` object.
  - **Synchronous Retrieval:** Once an embedded module's named exports have been made synchronously available, it won't be necessary to run the `parseEmbeddedModule()` function again until page reload. In the code above we can see that ``test_D1.displayParagraph_1(`test_D1: ${test_D1.paragraph_1}`);`` works, even in the absence of the `parseEmbeddedModule()` function being invoked. Why? Because, from the point when ``const test_A1 = await parseEmbeddedModule('testModule1');`` (higher up the script) first returned a asynchronous response, the named exports `displayParagraph_1` and `paragraph_1` have been persistently available on a synchronous basis from `embeddedModules.testModule1`.
@@ -203,12 +203,14 @@ Let's take a closer look at the `async / await` code above to get a better idea 
 From this last observation we might conclude, that although we always have the option to declare one or several exports explicitly (by invoking the function with a second argument), it's usually the best approach to _omit_ the second argument from the `parseEmbeddedModule()` function, since we may then be sure that any variable which has an embedded module assigned to it will include access to _all_ the exports from that embedded module.
 
 ###### USING `parseEmbeddedModule()` WITH .THEN()
+We can also perform the same series of `async / await` operations above using `.then()` syntax.
+
 ```js
 // ALL EXPORTS (VIA DEFAULT PARAMETER)
 parseEmbeddedModule('testModule1').then((module) => module.displayParagraph_1(`test_A1: ${module.paragraph_1}`));
 parseEmbeddedModule('testModule2').then((module) => module.displayParagraph_2(`test_A2: ${module.paragraph_2}`));
 
-// SINGLE EXPORT (VIA STRING PARAMETER)
+// SINGLE EXPORT (VIA ARRAY PARAMETER)
 parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => console.log(`test_B1: ${module.paragraph_1}`));
 parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => console.log(`test_B2: ${module.paragraph_2}`));
 
@@ -229,13 +231,9 @@ parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => module.disp
 parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => module.displayParagraph_2(`test_B2: ${module.paragraph_2}`));
 ```
 
-Let's take a closer look at the `.then()`-based code above to get a better idea of what's happening in each section:
+This time it's clearer why the final pair of operations won't work. Evidently, if the second argument of the `parseEmbeddedModule()` function is `['paragraph_1']`, then the function's response object will only include a single property: `.paragraph_1`. It will lack the property `displayParagraph_1` - and it will have no way of accessing such a property.
 
- - **All Exports:**
- - **Single Export:**
- - **Multiple Exports:**
- - **Synchronous Retrieval:**
- - **This will not work:**
+Note, also, that in the examples immediately above, the single-export operations reference a single-element array as the second argument of the `parseEmbeddedModule()` function rather than a string. In the context of the second parameter, a single-element array is functionally identical to a string.
 
 ______
 
