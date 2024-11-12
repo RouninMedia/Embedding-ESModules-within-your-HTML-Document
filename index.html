@@ -18,9 +18,9 @@
 <hr />
   
 <script type="module/embedded" id="testModule1">
-  const displayParagraph_1 = (text) => {
+  const displayParagraph_1 = (marker, text) => {
     const paragraph = document.createElement('p');
-    paragraph.textContent = `1: ${text}`;
+    paragraph.textContent = `${marker}: ${text}`;
     document.body.appendChild(paragraph);
   }
 
@@ -29,13 +29,13 @@
 </script>
 
 <script type="module/embedded" id="testModule2">
-  const displayParagraph_2 = (text) => {
+  const displayParagraph_2 = (marker, text) => {
     const paragraph = document.createElement('p');
-    paragraph.textContent = `2: ${text}`;
+    paragraph.textContent = `${marker}: ${text}`;
     document.body.appendChild(paragraph);
   }
 
-  const paragraph_2 = 'This is also a function export reading a separate paragraph export';
+  const paragraph_2 = 'This is a different function export reading a different paragraph export';
   export {displayParagraph_2, paragraph_2};
 </script>
 
@@ -60,8 +60,8 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   // ALL EXPORTS (VIA DEFAULT PARAMETER)
   const test_A1 = await parseEmbeddedModule('testModule1'); // INITIALISES testModule_1 FOR ALL FUTURE EXPORTS UNTIL PAGE IS RELOADED
   const test_A2 = await parseEmbeddedModule('testModule2'); // INITIALISES testModule_2 FOR ALL FUTURE EXPORTS UNTIL PAGE IS RELOADED
-  test_A1.displayParagraph_1(`test_A1: ${test_A1.paragraph_1}`);
-  test_A2.displayParagraph_2(`test_A2: ${test_A2.paragraph_2}`);
+  test_A1.displayParagraph_1('test_A1', test_A1.paragraph_1);
+  test_A2.displayParagraph_2('test_A2', test_A2.paragraph_2);
 
   // SINGLE EXPORT (VIA STRING PARAMETER)
   const test_B1 = await parseEmbeddedModule('testModule1', 'paragraph_1');
@@ -73,45 +73,45 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
   const test_C1 = await parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']);
   const test_C2 = await parseEmbeddedModule('testModule2', ['displayParagraph_2', 'paragraph_2']);
-  test_C1.displayParagraph_1(`test_C1: ${test_C1.paragraph_1}`);
-  test_C2.displayParagraph_2(`test_C2: ${test_C2.paragraph_2}`);
+  test_C1.displayParagraph_1('test_C1', test_C1.paragraph_1);
+  test_C2.displayParagraph_2('test_C2', test_C2.paragraph_2);
 
   // SYNCHRONOUS RETRIEVAL (ONLY POSSIBLE AFTER EMBEDDED MODULE ACTIVATION)
   const test_D1 = embeddedModules['testModule1'];
   const test_D2 = embeddedModules['testModule2'];
-  test_D1.displayParagraph_1(`test_D1: ${test_D1.paragraph_1}`);
-  test_D2.displayParagraph_2(`test_D2: ${test_D2.paragraph_2}`);
+  test_D1.displayParagraph_1('test_D1', test_D1.paragraph_1);
+  test_D2.displayParagraph_2('test_D2', test_D2.paragraph_2);
 
   // THIS WILL NOT WORK
-  test_B1.displayParagraph_1(`test_B1: ${test_B1.paragraph_1}`); // test_B1.displayParagraph_1 is not a function
-  test_B2.displayParagraph_2(`test_B2: ${test_B2.paragraph_2}`); // test_B2.displayParagraph_1 is not a function
+  test_B1.displayParagraph_1('test_B1', test_B1.paragraph_1); // test_B1.displayParagraph_1 is not a function
+  test_B2.displayParagraph_2('test_B2', test_B2.paragraph_2); // test_B2.displayParagraph_1 is not a function
 
 })();
 
 /*
 // ALL EXPORTS (VIA DEFAULT PARAMETER)
-parseEmbeddedModule('testModule1').then((module) => module.displayParagraph_1(`test_A1: ${module.paragraph_1}`));
-parseEmbeddedModule('testModule2').then((module) => module.displayParagraph_2(`test_A2: ${module.paragraph_2}`));
+parseEmbeddedModule('testModule1').then((module) => module.displayParagraph_1('test_A1', module.paragraph_1));
+parseEmbeddedModule('testModule2').then((module) => module.displayParagraph_2('test_A2', module.paragraph_2));
 
 // SINGLE EXPORT (VIA ARRAY PARAMETER)
 parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => console.log(`test_B1: ${module.paragraph_1}`));
 parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => console.log(`test_B2: ${module.paragraph_2}`));
 
 // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
-parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']).then((module) => module.displayParagraph_1(`test_C1: ${module.paragraph_1}`));
-parseEmbeddedModule('testModule2', ['displayParagraph_2', 'paragraph_2']).then((module) => module.displayParagraph_2(`test_C2: ${module.paragraph_2}`));
+parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']).then((module) => module.displayParagraph_1('test_C1', module.paragraph_1));
+parseEmbeddedModule('testModule2', ['displayParagraph_2', 'paragraph_2']).then((module) => module.displayParagraph_2('test_C2', module.paragraph_2));
 
 // SYNCHRONOUS RETRIEVAL (ONLY POSSIBLE AFTER EMBEDDED MODULE ACTIVATION, WHICH, IN THIS CASE, NECESSITATES A ZERO SECOND TIMEOUT)
 setTimeout(() => {
   const test_D1 = embeddedModules['testModule1'];
   const test_D2 = embeddedModules['testModule2'];
-  test_D1.displayParagraph_1(`test_D1: ${test_D1.paragraph_1}`);
-  test_D2.displayParagraph_2(`test_D2: ${test_D2.paragraph_2}`);
+  test_D1.displayParagraph_1('test_D1', test_D1.paragraph_1);
+  test_D2.displayParagraph_2('test_D2', test_D2.paragraph_2);
 }, 0);
 
 // THIS WILL NOT WORK
-parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => module.displayParagraph_1(`test_B1: ${module.paragraph_1}`));
-parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => module.displayParagraph_2(`test_B2: ${module.paragraph_2}`));
+parseEmbeddedModule('testModule1', ['paragraph_1']).then((module) => module.displayParagraph_1('test_B1', module.paragraph_1));
+parseEmbeddedModule('testModule2', ['paragraph_2']).then((module) => module.displayParagraph_2('test_B2', module.paragraph_2));
 */
   
 </script>  
