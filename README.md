@@ -26,7 +26,7 @@ ________
 
 ## Example of ESModules importing and exporting within a single HTML Document
 
- - _https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/_
+ - https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/
 
 ________
 
