@@ -30,6 +30,8 @@ ________
 
 ________
 
+## Three Steps to Same-Document ESModules
+
 #### Step One: Add two or more `<script type="module/embedded" id="example-id">` scripts to the HTML Document
 
 **What is `type="module/embedded"`?**
@@ -266,9 +268,3 @@ __________
  - **Module Pattern (2007):** http://web.archive.org/web/20140903025035/http://yuiblog.com/blog/2007/06/12/module-pattern/
  - **Revealing Module Pattern (2007):** https://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/
  - **Definitive Module Pattern (2014):** http://inniepress.blogspot.com/2014/07/definitive-module-pattern.html
-
-_______
-
-## Example of ESModules importing and exporting within a single HTML Document
-
- - https://rouninmedia.github.io/Embedding-multiple-ESModules-within-the-same-HTML-Document/
