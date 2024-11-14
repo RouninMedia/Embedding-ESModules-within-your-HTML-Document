@@ -111,7 +111,7 @@ After returning one or more  **Embedded Module** `exports`, the function termina
 
 This is intentional.
 
-The assignment is required in order that _any_ type of script in the document, be it:
+The assignment is required in order that _any type of script in the document_, be it:
 
  - `<script>`
  - `<script type="module">`
