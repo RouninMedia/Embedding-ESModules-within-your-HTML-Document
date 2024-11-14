@@ -105,13 +105,19 @@ If the function can find the **Embedded Module**, it will check to see if the `e
 
 Once the `embeddedModules` object contains the **Embedded Module**'s `exports`, the function will return one, several or all of the exports, according to the `exportNames` parameter.
 
-After returning one or more  **Embedded Module** `exports`, the function ends.
+After returning one or more  **Embedded Module** `exports`, the function terminates.
 
-**N.B.** Note that the function is explicitly declared as a property of `window` via `window.parseEmbeddedModule = parseEmbeddedModule;`. This is intentional. This is required in order that _any_ script in the document, be it:
+**N.B.** Note that the function is _explicitly_ declared as a property of `window` via `window.parseEmbeddedModule = parseEmbeddedModule;`.
+
+This is intentional.
+
+The declaration is required in order that _any_ type of script in the document, be it:
+
  - `<script>`
  - `<script type="module">`
  - `<script type="module/embedded">`
-will have access to the `parseEmbeddedModule()` function.
+
+will have access to the `parseEmbeddedModule()` function without needing to re-declare it.
 
 _______
 
