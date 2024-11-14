@@ -278,10 +278,10 @@ ______
 
 ## Passing configurable objects around between embedded modules
 
-The website **javascript.info** has an excellent primer on ESModules (https://javascript.info/modules-intro) which discusses the idea that ESModules are _configurable_.
+The website **javascript.info** includes an excellent primer on ESModules (https://javascript.info/modules-intro) which takes some time to discuss the idea that ESModules are _configurable_.
 
 > Exports are generated, and then they are shared between importers, so if something changes the admin object, other importers will see that.
-> Such behavior is actually very convenient, because it allows us to configure modules.
+> **Such behavior is actually very convenient, because it allows us to _configure_ modules.**
 > In other words, a module can provide a generic functionality that needs a setup. E.g. authentication needs credentials. Then it can export a configuration object expecting the outer code to assign to it.
 >
 > Here’s the classical pattern:
