@@ -162,6 +162,8 @@ const parseEmbeddedModule = async (moduleName, exportNames = []) => {
         ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
         : embeddedModules[moduleName];
 }
+
+ window.parseEmbeddedModule = parseEmbeddedModule;
 ```
 
 ###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
