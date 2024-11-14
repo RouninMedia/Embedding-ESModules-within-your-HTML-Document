@@ -107,11 +107,11 @@ Once the `embeddedModules` object contains the **Embedded Module**'s `exports`, 
 
 After returning one or more  **Embedded Module** `exports`, the function terminates.
 
-**N.B.** Note that the function is _explicitly_ declared as a property of `window` via `window.parseEmbeddedModule = parseEmbeddedModule;`.
+**N.B.** Note that the function is _explicitly_ attached to `window` as a property, via the line `window.parseEmbeddedModule = parseEmbeddedModule;`.
 
 This is intentional.
 
-The declaration is required in order that _any_ type of script in the document, be it:
+The assignment is required in order that _any_ type of script in the document, be it:
 
  - `<script>`
  - `<script type="module">`
