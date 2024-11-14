@@ -29,7 +29,9 @@ ______
 
 ## However...
 
-_However_ what you can't do - at least not natively - is embed _multiple_ **ESModule** scripts into the same HTML document and then have all those **ESModules** `import` and `export` from each other, resulting in a _modular script architecture_ which runs entirely within a _same-document-environment_.
+_However_.
+
+What you can't do - at least not natively - is embed _multiple_ **ESModule** scripts into the same HTML document and then have all those **ESModules** `import` and `export` from each other, resulting in a _modular script architecture_ which runs entirely within a _same-document-environment_.
 
 The following custom-built approach, involving `<script type="module/embedded" id="example-id">` and the asynchronous function `parseEmbeddedModule()` makes this possible.
 
