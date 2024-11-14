@@ -12,9 +12,9 @@ From an **ESModule** - either an external `.js` file or one embedded in an HTML 
 
  - `import {export1 as alias1, export2 as alias2, /* … */} from '/module-name.js';`
 
-#### dynamic `import`
+#### dynamic `import()`
 
- - let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});`
+ - `let alias1, alias2; import('/my-module.js').then((myModule) => {alias1 = myModule.export1; alias2 = myModule.export2;});`
 
 ### From a Script
 You may also `import()` an **ESModule** from a (non-module) JavaScript - either an external `.js` file or one embedded in an HTML Document - but _only_ via dynamic `import()`.
