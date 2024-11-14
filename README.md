@@ -71,7 +71,7 @@ _______
 
 #### Step Two: Activate any Embedded Module via `parseEmbeddedModule()`
 
-Once the **HTML Document** contains one or more `<script type="module/embedded" id="example-id">` elements, each of them can be explicitly activated via the asynchronous `parseEmbeddedModule()` function:
+Once the **HTML Document** contains one or more `<script type="module/embedded" id="example-id">` elements, any of them can be explicitly activated via the asynchronous `parseEmbeddedModule()` function:
 
 ##### `parseEmbeddedModule()` function
 ```js
