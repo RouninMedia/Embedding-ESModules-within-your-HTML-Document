@@ -276,6 +276,24 @@ Note, also, that in the examples immediately above, the single-export operations
 
 ______
 
+## Passing configurable objects around between embedded modules
+
+The website **javascript.info** has an excellent primer on ESModules (https://javascript.info/modules-intro) which discusses the idea that ESModules are _configurable_.
+
+> Exports are generated, and then they are shared between importers, so if something changes the admin object, other importers will see that.
+> Such behavior is actually very convenient, because it allows us to configure modules.
+> In other words, a module can provide a generic functionality that needs a setup. E.g. authentication needs credentials. Then it can export a configuration object expecting the outer code to assign to it.
+
+> Here’s the classical pattern:
+
+> 1. A module exports some means of configuration, e.g. a configuration object.
+> 2. On the first import we initialize it, write to its properties. The top-level application script may do that.
+> 3. Further imports use the module.
+
+
+
+______
+
 ## Conclusion
 
 That's it.
