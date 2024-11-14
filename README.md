@@ -107,6 +107,12 @@ Once the `embeddedModules` object contains the **Embedded Module**'s `exports`, 
 
 After returning one or more  **Embedded Module** `exports`, the function ends.
 
+**N.B.** Note that the function is explicitly declared as a property of `window` via `window.parseEmbeddedModule = parseEmbeddedModule;`. This is intentional. This is required in order that _any_ script in the document, be it:
+ - `<script>`
+ - `<script type="module">`
+ - `<script type="module/embedded">`
+will have access to the `parseEmbeddedModule()` function.
+
 _______
 
 #### Step Three: The Embedded Module's `exports` are now retrievable from the `embeddedModules` object
