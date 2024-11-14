@@ -117,7 +117,7 @@ The assignment is required in order that _any_ type of script in the document, b
  - `<script type="module">`
  - `<script type="module/embedded">`
 
-will have access to the `parseEmbeddedModule()` function without needing to re-declare it.
+will have access to the `parseEmbeddedModule()` function without it ever needing to be re-declared.
 
 _______
 
