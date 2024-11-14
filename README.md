@@ -43,7 +43,7 @@ ________
 
 ________
 
-## Three Steps to Same Document ESModules
+## Three Steps to embedding multiple ESModules within the same HTML Document
 
 #### Step One: Add two or more `<script type="module/embedded" id="example-id">` scripts to the HTML Document
 
