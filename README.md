@@ -10,7 +10,7 @@ From an **ESModule** - either an external `.js` file or one embedded in an HTML 
 
 #### static `import`
 
-`import {export1 as alias1, export2 as alias2, /* … */} from '/module-name.js';`
+`import { export1 as alias1, export2 as alias2 } from '/module-name.js';`
 
 #### dynamic `import()`
 
