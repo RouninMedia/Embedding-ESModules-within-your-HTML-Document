@@ -292,20 +292,20 @@ The website **javascript.info** includes an excellent primer on **ESModules** (h
 
 A simple example of the pattern above in practice, using **ESModules**:
 
-```
-const userProfile = { loginTime: new Date.now(); };
+```js
+const userProfile = {
+  loginTime: new Date.now();
+};
 
-const greetUser() {
-  console.log(`Hi, ${userProfile.userName}!`);
-}
+const greetUser = () => console.log(`Hi, ${userProfile.userName}!`);
 
 export { userProfile, greetUser }
 ```
 
-```
+```js
 ```
 
-```
+```js
 ```
 
 
