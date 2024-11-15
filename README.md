@@ -276,7 +276,7 @@ Note, also, that in the examples immediately above, the single-export operations
 
 ______
 
-## Passing configurable objects around between embedded modules
+## Passing configurable objects around between _embedded modules_
 
 The website **javascript.info** includes an excellent primer on **ESModules** (https://javascript.info/modules-intro) which presents the idea that **ESModules** are _configurable_.
 
