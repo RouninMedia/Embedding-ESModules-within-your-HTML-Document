@@ -278,35 +278,39 @@ ______
 
 ## Passing updatable objects around, between _embedded modules_
 
-The website **javascript.info** includes an excellent primer on **ESModules** (https://javascript.info/modules-intro) which presents the idea that `objects` passed around by **ESModules** are _editable_ / _updatable_.
+When we write architectures based on **ESModules**, any modifications made to an `export`-able `object` will persist.
 
-> Exports are generated, and then they are shared between importers, so if something changes the admin object, other importers will see that.
-> **Such behavior is actually very convenient, because it allows us to _configure_ modules.**
-> In other words, a module can provide a generic functionality that needs a setup. E.g. authentication needs credentials. Then it can export a configuration object expecting the outer code to assign to it.
->
-> Here’s the classical pattern:
->
-> 1. A module exports some means of configuration, e.g. a configuration object.
-> 2. On the first import we initialize it, write to its properties. The top-level application script may do that.
-> 3. Further imports use the module.
+If the `object` is imported, subsequently, by another **ESModule**, it is the _modified_ `object` which is imported, not the original object.
 
-A simple example of the pattern above in practice, using **ESModules**:
+A simple example of the process above in practice, using **ESModules**:
 
+#### initialise.js
 ```js
 const userProfile = {
-  loginTime: new Date.now(),
+  loginTime: Date.now(),
   userType: standard
 };
 
-const greetUser = () => console.log(`Hi, ${userProfile.userName}!`);
+const greetUser = (userProfile) => console.log(`Hi, ${userProfile.userName}!`);
 
 export { userProfile, greetUser }
 ```
 
+#### add-username.js
 ```js
+import { userProfile } from '/initialise.js';
+
+userProfile.userName = 'Aimée';
+
+export { userProfile }
 ```
 
+#### greet-user.js
 ```js
+import { userProfile, , greetUser } from '/initialise.js';
+
+greetUser(userProfile); // 'Hi Aimée!'
+
 ```
 
 
