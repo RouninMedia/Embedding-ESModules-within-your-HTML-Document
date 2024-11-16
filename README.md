@@ -276,9 +276,9 @@ Note, also, that in the examples immediately above, the single-export operations
 
 ______
 
-## Passing configurable objects around between _embedded modules_
+## Passing updatable objects around between _embedded modules_
 
-The website **javascript.info** includes an excellent primer on **ESModules** (https://javascript.info/modules-intro) which presents the idea that **ESModules** are _configurable_.
+The website **javascript.info** includes an excellent primer on **ESModules** (https://javascript.info/modules-intro) which presents the idea that `objects` passed around by **ESModules** are _editable_ / _updatable_.
 
 > Exports are generated, and then they are shared between importers, so if something changes the admin object, other importers will see that.
 > **Such behavior is actually very convenient, because it allows us to _configure_ modules.**
@@ -294,7 +294,8 @@ A simple example of the pattern above in practice, using **ESModules**:
 
 ```js
 const userProfile = {
-  loginTime: new Date.now();
+  loginTime: new Date.now(),
+  userType: standard
 };
 
 const greetUser = () => console.log(`Hi, ${userProfile.userName}!`);
