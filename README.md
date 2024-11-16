@@ -321,7 +321,7 @@ ______
 
 That's it.
 
-We can now add **embedded modules** to a single document via `<script type="module/embedded">`.
+We can now add **embedded modules** to a single document using: `<script type="module/embedded">`.
 
 And we can `import` the `exports` from those **embedded modules** into one or more:
 
