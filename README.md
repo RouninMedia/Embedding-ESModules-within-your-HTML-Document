@@ -278,7 +278,7 @@ ______
 
 ## Passing updatable objects around, between _embedded modules_
 
-When we write architectures based on **ESModules**, any modifications made to an `export`-able `object` will persist.
+When we write architectures based on **ESModules**, any modifications made to an `export` `object` will persist.
 
 If the `object` is imported, subsequently, by another **ESModule**, it is the _modified_ `object` which is imported, not the original object.
 
