@@ -276,7 +276,7 @@ Note, also, that in the examples immediately above, the single-export operations
 
 ______
 
-## Passing updatable objects around between _embedded modules_
+## Passing updatable objects around, between _embedded modules_
 
 The website **javascript.info** includes an excellent primer on **ESModules** (https://javascript.info/modules-intro) which presents the idea that `objects` passed around by **ESModules** are _editable_ / _updatable_.
 
