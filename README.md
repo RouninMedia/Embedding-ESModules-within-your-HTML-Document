@@ -278,9 +278,9 @@ ______
 
 ## Passing updatable objects around, between _embedded modules_
 
-When we write architectures based on **ESModules**, any modifications made to an `export` `object` will persist.
+When we write architectures based on **ESModules**, every modification made to an exported `object` persists.
 
-If the `object` is imported, subsequently, by another **ESModule**, it is the _modified_ `object` which is imported, not the original object.
+If, subsequently, the `object` is imported by another **ESModule**, it is the _modified_ `object` which is imported, not the initial object.
 
 A simple example, using **ESModules**, which illustrates this:
 
@@ -326,13 +326,13 @@ userProfile.userName = 'Aimée';
 
 ```
 
-In the HTML document we can see that the `greetUser` function and the `userProfile` object are imported twice: once before `add-username.js` is imported and once after.
+In the HTML document we can see that `initialise.js` is imported and run twice: once before `add-username.js` is imported and once after.
 
-We can also see that the first time `initialise.js` is imported (i.e. before `add-username.js` is imported), the `greetUser` function cannot find the `userName` property in the `userProfile` object - because it does not yet exist.
+We can also see that the first time `initialise.js` is imported (i.e. before `add-username.js` is imported), the imported `greetUser` function cannot find the `userName` property in the imported `userProfile` object - because it does not yet exist.
 
 The second time around, _even though_ `userProfile` is never given a `userName` key in `initialise.js`, the `userName` property _does_ exist in the `userProfile`  object and the `greetUser` function works perfectly.
 
-The only difference between the first time the `greetUser` function is run and the second is the importing of `add-username.js`. This ESModule updates the `userProfile` object with changes which then persist.
+The only difference between the first time the `greetUser` function is run and the second is the importing and running of `add-username.js`, in which the `userProfile` object from `initialise.js` is imported and modified with changes which then persist.
 
 ______
 
