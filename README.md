@@ -328,9 +328,9 @@ userProfile.userName = 'Aimée';
 
 In the HTML document we can see that `initialise.js` is imported and run twice: once before `add-username.js` is imported and once after.
 
-We can also see that the first time `initialise.js` is imported (i.e. before `add-username.js` is imported), the imported `greetUser` function _cannot find_ the `userName` property in the imported `userProfile` object. This is because it does not yet exist.
+We can also see that the first time `initialise.js` is imported (i.e. before `add-username.js` is imported), the imported `greetUser` function _cannot find_ the `userName` property in the imported `userProfile` object. This is because the object in question does not yet have such a property.
 
-The second time around, _even though_ `userProfile` is never given a `userName` key in `initialise.js`, the `userName` property _does_ exist in the `userProfile`  object and the `greetUser` function works perfectly.
+The second time around, _even though_ we know that `userProfile` is never given a `userName` property in `initialise.js`, suddenly it seems the property _does_ exist in the object and now the `greetUser` function works perfectly.
 
 The only difference between the first time the `greetUser` function is run and the second is the importing and running of `add-username.js`, in which the `userProfile` object from `initialise.js` is imported and modified with changes which then persist.
 
