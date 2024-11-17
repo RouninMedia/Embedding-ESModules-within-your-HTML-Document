@@ -282,7 +282,7 @@ When we write architectures based on **ESModules**, any modifications made to an
 
 If the `object` is imported, subsequently, by another **ESModule**, it is the _modified_ `object` which is imported, not the original object.
 
-A simple example of the process above in practice, using **ESModules**:
+A simple example, using **ESModules**, which illustrates this:
 
 #### initialise.js
 ```js
@@ -313,7 +313,9 @@ greetUser(userProfile); // 'Hi Aimée!'
 
 ```
 
+In `greet-user.js`, we can see that the function processes `userProfile` which it imports from `initialise.js`.
 
+However, we note that the function executes successfully, since the `userProfile` already includes the `userName` key added to it in `add-username.js`, _even though_ `userProfile` does not have a `userName` key in `initialise.js`.
 
 ______
 
