@@ -301,21 +301,38 @@ export { userProfile, greetUser }
 import { userProfile } from '/initialise.js';
 
 userProfile.userName = 'Aimée';
-
-export { userProfile }
 ```
 
-#### greet-user.js
-```js
-import { userProfile, , greetUser } from '/initialise.js';
+#### HTML DOCUMENT
+```html
 
-greetUser(userProfile); // 'Hi Aimée!'
+  <script type="module">
+    import { userProfile, greetUser } from '/initialise.js';
+
+    greetUser(userProfile); // 'Hi undefined!'
+  </script>
+
+
+  <script type="module">
+    import '/add-username.js';
+  </script>
+
+
+  <script type="module">
+    import { userProfile, greetUser } from '/initialise.js';
+
+    greetUser(userProfile); // 'Hi Aimée!'
+  </script>
 
 ```
 
-In `greet-user.js`, we can see that the function processes `userProfile` which it imports from `initialise.js`.
+In the HTML document we can see that the `greetUser` function and the `userProfile` object are imported twice: once before `add-username.js` is imported and once after.
 
-However, we note that the function executes successfully, since the `userProfile` already includes the `userName` key added to it in `add-username.js`, _even though_ `userProfile` does not have a `userName` key in `initialise.js`.
+We can also see that the first time `initialise.js` is imported (i.e. before `add-username.js` is imported), the `greetUser` function cannot find the `userName` property in the `userProfile` object - because it does not yet exist.
+
+The second time around, _even though_ `userProfile` is never given a `userName` key in `initialise.js`, the `userName` property _does_ exist in the `userProfile`  object and the `greetUser` function works perfectly.
+
+The only difference between the first time the `greetUser` function is run and the second is the importing of `add-username.js`. This ESModule updates the `userProfile` object with changes which then persist.
 
 ______
 
