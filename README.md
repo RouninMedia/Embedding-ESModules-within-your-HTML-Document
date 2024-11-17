@@ -334,6 +334,10 @@ The second time `initialise.js` is imported (_after_ `add-username.js` is import
 
 What we are observing is that when `add-username.js` is imported and run, this imports and modifies the `userProfile` object _and_ the modifications then **persist**.
 
+## ---
+
+We want _Embedded Modules_ to work the same way - and they do.
+
 ______
 
 ## Conclusion
