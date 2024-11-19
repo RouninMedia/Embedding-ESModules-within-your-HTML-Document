@@ -336,7 +336,7 @@ What we are observing is that importing and running `add-username.js` means that
 
 ## ---
 
-We want _Embedded Modules_ to work the same way - and they do.
+We should want _Embedded Modules_ to work the same way - and they do.
 
 ______
 
