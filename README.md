@@ -88,22 +88,22 @@ Once the **HTML Document** contains one or more `<script type="module/embedded" 
 
 ##### `parseEmbeddedModule()` function
 ```js
-const embeddedModules = {};
+window.embeddedModules = {};
 
 const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   const embeddedModule = document.querySelector(`#${moduleName}`);
   if (embeddedModule?.getAttribute('type') !== 'module/embedded') throw new Error(`<script type="module/embedded" id="${moduleName}"> not found in document`);
-  if (!embeddedModules[moduleName]) {
-    embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
-  }
+  embeddedModules[moduleName] = (Object.hasOwn(embeddedModules, moduleName))
+    ? embeddedModules[moduleName]
+    : await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})));
   return (typeof exportNames === 'string') 
-    ? {[exportNames]: embeddedModules[moduleName][exportNames]}
-    : (exportNames.length > 0) 
+    ? embeddedModules[moduleName][exportNames]
+    : ((Object.keys(embeddedModules[moduleName]).length === 1) && (Object.keys(embeddedModules[moduleName])[0] === 'default'))
+      ? embeddedModules[moduleName]['default']
+      : (exportNames.length > 0) 
         ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
         : embeddedModules[moduleName];
-}
-
-window.parseEmbeddedModule = parseEmbeddedModule;
+}  
 ```
 The function anticipates the following parameters:
 
@@ -175,22 +175,22 @@ Since `parseEmbeddedModule()` is asynchronous, we can either use it in conjuncti
 
 ##### `parseEmbeddedModule()` FUNCTION
 ```js
-const embeddedModules = {};
+window.embeddedModules = {};
 
 const parseEmbeddedModule = async (moduleName, exportNames = []) => {
   const embeddedModule = document.querySelector(`#${moduleName}`);
   if (embeddedModule?.getAttribute('type') !== 'module/embedded') throw new Error(`<script type="module/embedded" id="${moduleName}"> not found in document`);
-  if (!embeddedModules[moduleName]) {
-    embeddedModules[moduleName] = await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})))
-  }
+  embeddedModules[moduleName] = (Object.hasOwn(embeddedModules, moduleName))
+    ? embeddedModules[moduleName]
+    : await import(URL.createObjectURL(new Blob([document.querySelector(`#${moduleName}`).textContent], {type: 'application/javascript'})));
   return (typeof exportNames === 'string') 
-    ? {[exportNames]: embeddedModules[moduleName][exportNames]}
-    : (exportNames.length > 0) 
+    ? embeddedModules[moduleName][exportNames]
+    : ((Object.keys(embeddedModules[moduleName]).length === 1) && (Object.keys(embeddedModules[moduleName])[0] === 'default'))
+      ? embeddedModules[moduleName]['default']
+      : (exportNames.length > 0) 
         ? Object.fromEntries(Object.entries(embeddedModules[moduleName]).filter(([key, value]) => exportNames.includes(key)))
         : embeddedModules[moduleName];
 }
-
-window.parseEmbeddedModule = parseEmbeddedModule;
 ```
 
 ###### USING `parseEmbeddedModule()` WITH ASYNC / AWAIT
