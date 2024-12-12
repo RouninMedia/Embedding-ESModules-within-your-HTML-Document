@@ -276,7 +276,7 @@ Note, also, that in the examples immediately above, the single-export operations
 
 ______
 
-## Passing updatable objects around, between _embedded modules_
+## Passing updatable objects around, between native ESModules
 
 When we write architectures based on **ESModules**, every modification made to an exported `object` persists.
 
@@ -334,9 +334,13 @@ The second time `initialise.js` is imported (_after_ `add-username.js` is import
 
 What we are observing is that importing and running `add-username.js` means that the `userProfile` `export` is imported and modified and, _critically_, these modifications then **persist**.
 
-## ---
-
 We should want _Embedded Modules_ to work the same way - and they do.
+
+## Passing updatable objects around, between _embedded modules_
+
+Here is the same example as above showing that when we write the same architectures using **Embedded Modules**, every modification made to an exported `object` persists, just as it did before.
+
+That is, when an object is imported and then modified, any subsequent import of the `object` by another **Embedded Module** will import the _modified_ `object`, not the initial object.
 
 ______
 
