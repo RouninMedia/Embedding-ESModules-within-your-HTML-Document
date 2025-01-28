@@ -73,6 +73,10 @@
 
       const test_B2 = await parseEmbeddedModule('testModule2', 'paragraph_2');
       console.log(`test_B2: ${test_B2.paragraph_2}`);
+      
+      const paragraph = document.createElement('p');
+      paragraph.textContent = 'For test_B1 and test_B2, see the browser console.';
+      document.body.appendChild(paragraph);
 
       // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
       const test_C1 = await parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']);
