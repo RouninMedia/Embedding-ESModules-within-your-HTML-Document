@@ -74,9 +74,9 @@
       const test_B2 = await parseEmbeddedModule('testModule2', 'paragraph_2');
       console.log(`test_B2: ${test_B2.paragraph_2}`);
       
-      const paragraph = document.createElement('p');
-      paragraph.textContent = 'For test_B1 and test_B2, see the browser console.';
-      document.body.appendChild(paragraph);
+      const firstBTestParagraph = document.createElement('p');
+      firstBTestParagraph.textContent = 'For test_B1 and test_B2, see the browser console.';
+      document.body.appendChild(firstBTestParagraph);
 
       // MULTIPLE EXPORTS (VIA ARRAY PARAMETER)
       const test_C1 = await parseEmbeddedModule('testModule1', ['displayParagraph_1', 'paragraph_1']);
@@ -93,6 +93,10 @@
       // THIS WILL NOT WORK... BECAUSE displayParagraph_1 WAS NEVER IMPORTED INTO THE test_B1 OBJECT
       test_B1.displayParagraph_1('test_B1', test_B1.paragraph_1); // test_B1.displayParagraph_1 is not a function
       test_B2.displayParagraph_2('test_B2', test_B2.paragraph_2); // test_B2.displayParagraph_1 is not a function
+      
+      const secondBTestParagraph = document.createElement('p');
+      secondBTestParagraph.textContent = 'For test_B1 (again) and test_B2 (again), see the browser console.';
+      document.body.appendChild(secondBTestParagraph);
 
     })();
 
