@@ -69,7 +69,7 @@
 
       // SINGLE EXPORT (VIA STRING PARAMETER)
       const firstBTestParagraph = document.createElement('p');
-      firstBTestParagraph.textContent = 'For test_B1 and test_B2, see the browser console.';
+      firstBTestParagraph.innerHTML = '<em>For test_B1 and test_B2, see the browser console.</em>';
       document.body.appendChild(firstBTestParagraph);
       
       const test_B1 = await parseEmbeddedModule('testModule1', 'paragraph_1');
@@ -92,7 +92,7 @@
 
       // THIS WILL NOT WORK... BECAUSE displayParagraph_1 WAS NEVER IMPORTED INTO THE test_B1 OBJECT
       const secondBTestParagraph = document.createElement('p');
-      secondBTestParagraph.textContent = 'For test_B1 (again) and test_B2 (again), see the browser console.';
+      secondBTestParagraph.innerHTML = '<em>For test_B1 (again) and test_B2 (again), see the browser console.</em>';
       document.body.appendChild(secondBTestParagraph);
       
       test_B1.displayParagraph_1('test_B1', test_B1.paragraph_1); // test_B1.displayParagraph_1 is not a function
