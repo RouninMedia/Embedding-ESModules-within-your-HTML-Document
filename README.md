@@ -136,7 +136,7 @@ _______
 
 #### Step Three: The Embedded Module's `exports` are now retrievable from the `embeddedModules` object
 
-An **Embedded Module** only needs to be _activated_ by `parseEmbeddedModule()` once.
+An **Embedded Module** only needs to be _activated once_ by `parseEmbeddedModule()`.
 
 When the **Embedded Module** is first _activated_, two things will happen:
  1. the **Embedded Module**'s `exports` will be asynchronously imported (via dynamic `import()`) into the `embeddedModules` object;
